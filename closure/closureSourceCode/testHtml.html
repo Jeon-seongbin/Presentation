@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>high order function</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script type="text/javascript">
+
+		//jQuery call back
+		function sayHello(){
+			alert("hello high order function world jQuery")
+		}
+		$().ready(function(){
+			$("#clickMe").click(sayHello)
+		})
+		
+	</script>
+</head>
+<body>
+	<div id="clickMe">Click me jQuery</div><br>
+	<div id="clickMeToo">Click me javascript</div>
+
+</body>
+<script>
+
+	//javascript call back
+	function sayHi(){
+		alert("hi high order function world javascript")
+	}
+	document.getElementById("clickMeToo").addEventListener("click",sayHi)
+
+</script>
+</html>
