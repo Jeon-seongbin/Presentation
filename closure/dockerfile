@@ -1,0 +1,3 @@
+#docker file 
+FROM nginx
+COPY ./closureSourceCode /usr/share/nginx/html
