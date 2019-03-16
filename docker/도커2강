@@ -26,8 +26,8 @@
     docker stack deploy -c 파일이름 서비스이름
     피일 이름을 디플로이(배치)한다
 
-    docker service ls
     디플로이 된 서비스 확인
+    docker service ls
 
     docker service ps 이름
     태스크 확인
