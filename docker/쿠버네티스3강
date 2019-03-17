@@ -13,18 +13,19 @@
 
     kubectl run nginx --image=nginx:1.10.0
                 이름            배포할 이미지
-    새로운 디플로이먼트(배포할이미지)를 생성? 로드하는건가?
-    
-    In Kubernetes, all containers run in pods.
-    And in this command, Kubernetes created what is called a deployment behind the scenes,
-    and runs a single pod with the nginx container in it. A deployment keeps a given number
-    of pods up and running even when the nodes they run on fail. In this case, you run the 
-    default number of pods, which is 1.
+    새로운 nginx(런할 이미지 대상의 이름) pod(컨테이너)와 디플로이먼트를 생성하고 실행시킨다
+    (아무런 설정이 없어서 기초설정이 적용되는건지?)
 
-    kubectl run command. The run command creates a new deployment. We need to provide the 
-    deployment name and app image location (include the full repository url for images 
-    hosted outside Docker hub). We want to run the app on a specific port so we add 
-    the --port parameter:
+        In Kubernetes, all containers run in pods.
+        And in this command, Kubernetes created what is called a deployment behind the scenes,
+        and runs a single pod with the nginx container in it. A deployment keeps a given number
+        of pods up and running even when the nodes they run on fail. In this case, you run the 
+        default number of pods, which is 1.
+
+        kubectl run command. The run command creates a new deployment. We need to provide the 
+        deployment name and app image location (include the full repository url for images 
+        hosted outside Docker hub). We want to run the app on a specific port so we add 
+        the --port parameter:
 
     kubectl get pods
     배포할 nginx컨테이너의 팟을 확인
@@ -33,12 +34,14 @@
     배포 리스트 확인
 
     kubectl expose deployment nginx --port 80 --type LoadBalancer
-    배포한다
-    Use the kubectl expose command to expose the nginx container outside Kubernetes.
-    Kubernetes created a service and an external load balancer with a public IP address attached to it
-    (you will learn about services later). The IP address remains the same for the life of the service. 
-    Any client who hits that public IP address (for example an end user or another container) is routed
-    to pods behind the service. In this case, that would be the nginx pod.
+    디플로이먼트를 공개한다
+    pod를 노드 상에 배치시키고 서비스를 만들어서 공개시킨다
+
+        Use the kubectl expose command to expose the nginx container outside Kubernetes.
+        Kubernetes created a service and an external load balancer with a public IP address attached to it
+        (you will learn about services later). The IP address remains the same for the life of the service. 
+        Any client who hits that public IP address (for example an end user or another container) is routed
+        to pods behind the service. In this case, that would be the nginx pod.
 
     kubectl scale deployment nginx --replicas 3
     Kubectl scale 명령 다음에 배포 유형, 이름 및 원하는 인스턴스 수를 사용합니다.

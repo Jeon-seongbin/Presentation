@@ -124,7 +124,10 @@ Use kubectl run to launch a single instance of the nginx container.
 
 kubectl run nginx --image=nginx:1.10.0
 
-In Kubernetes, all containers run in pods. And in this command, Kubernetes created what is called a deployment behind the scenes, and runs a single pod with the nginx container in it. A deployment keeps a given number of pods up and running even when the nodes they run on fail. In this case, you run the default number of pods, which is 1.
+In Kubernetes, all containers run in pods. And in this command, Kubernetes created what is called 
+a deployment behind the scenes, and runs a single pod with the nginx container in it. A deployment
+ keeps a given number of pods up and running even when the nodes they run on fail. In this case, 
+ you run the default number of pods, which is 1.
 
 You'll learn more about deployments later.
 Step 2
@@ -139,7 +142,11 @@ Use the kubectl expose command to expose the nginx container outside Kubernetes.
 
 kubectl expose deployment nginx --port 80 --type LoadBalancer
 
-Kubernetes created a service and an external load balancer with a public IP address attached to it (you will learn about services later). The IP address remains the same for the life of the service. Any client who hits that public IP address (for example an end user or another container) is routed to pods behind the service. In this case, that would be the nginx pod.
+Kubernetes created a service and an external load balancer with a public IP address attached to it 
+(you will learn about services later). The IP address remains the same for the life of the service.
+Any client who hits that public IP address (for example an end user or another container) is routed
+to pods behind the service. In this case, that would be the nginx pod.
+
 Step 4
 
 Use the kubectl get command to view the new service.
@@ -148,7 +155,8 @@ kubectl get services
 
 You'll see an external IP that you can use to test and contact the nginx container remotely.
 
-It may take a few seconds before the ExternalIP field is populated for your service. This is normal—just re-run the kubectl get services command every few seconds until the field is populated.
+It may take a few seconds before the ExternalIP field is populated for your service.
+ This is normal—just re-run the kubectl get services command every few seconds until the field is populated.
 Step 5
 
 Use the kubectl scale command to scale up the number of backend applications (pods) running on your service using.
@@ -465,4 +473,3 @@ kubectl describe pods healthy-monolith
 Step 6
 
 When you are finished, press Ctrl+C in terminal 2 to close the kubectl proxy command.
-
