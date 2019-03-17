@@ -46,11 +46,9 @@
     kubectl scale deployment nginx --replicas 3
     Kubectl scale 명령 다음에 배포 유형, 이름 및 원하는 인스턴스 수를 사용합니다.
     Kubernetes supports an easy-to-use workflow out of the box using the kubectl run, expose, and scale commands.
-
     Explore the built-in pod documentation using the kubectl explain command.
 
     kubectl explain pods
-
     While you explore the Kubernetes API, kubectl explain will be one of the most common commands you use.
     Note how you used it above to investigate an API object and how you will use it below to check on various properties of API objects.
     팟에 대한 설명?
