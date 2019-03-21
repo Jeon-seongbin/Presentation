@@ -1,87 +1,31 @@
-명령어 정리
+쿠버네티스 3강 
 
-    kubectl version
-    버전확인
+스케일 조정과 디플로이먼트 전략
 
-    kubectl cluster-info
-    쿠버네티스 클러스터 버전확인
+스케일 조정
 
-    source <(kubectl completion bash)
-    자동완성하게 도와준다는커멘드
-    Kubernetes comes with auto-completion.
-    You can use the kubectl completion command and the built-in source command to set this up.
+트래픽이 많아질때 우리는 좀더 많은 pod를 생성하여 트래픽 분산을 실시 할 수 있다
+좀더 많은 노드에 pod를 생성하여 분산 시킨후 서비스로 묶는 행위
 
-    kubectl run nginx --image=nginx:1.10.0
-                이름            배포할 이미지
-    새로운 nginx(런할 이미지 대상의 이름) pod(컨테이너의 집합체)와 디플로이먼트를 생성하고 실행시킨다
-    (아무런 설정이 없어서 기초설정이 적용되는건지?)
+    kubectl scale deployment 디플로이먼트이름 --replicas=유지할 pod의 갯수
+    kubectl scale deployment deployment --replicas=5
 
-        In Kubernetes, all containers run in pods.
-        And in this command, Kubernetes created what is called a deployment behind the scenes,
-        and runs a single pod with the nginx container in it. A deployment keeps a given number
-        of pods up and running even when the nodes they run on fail. In this case, you run the 
-        default number of pods, which is 1.
+    replicas 는 pod의 갯수가 아니다 그저 디플로이먼트를 유지하기 위한 pod의 갯수이다
+    예를들어 이미지를 변경했을때(혹은 업데이트를 진행했을때)(다음에 설명) 좀더 많은 pod가 생성되고 정지되고 다시 실행시키는데 
+    pod는 일정한 수를 유지하면서(서비스를 유지하면서) 업데이트를 진행하는데 이때 일정한 수를 유지하는 범위가 replicas 옵션이다
 
-        kubectl run command. The run command creates a new deployment. We need to provide the 
-        deployment name and app image location (include the full repository url for images 
-        hosted outside Docker hub). We want to run the app on a specific port so we add 
-        the --port parameter:
+쿠버네티스의 디플로이먼트 전략
 
-    kubectl proxy
-    파드는 프라이빗 하고 폐쇄된 공간이라 proxy 명령어를 이용하여 바깥에서 접속 가능하다
-    service가 expose공개 안되었을때 사용
+1. 롤링업데이트
 
-    kubectl get pods
-    현재 팟의 리스트
+    일반적인 디플로이먼트 전략
+    쿠버네티스는 '이미지(컨테이너)가 변경'되었을때 자동으로 업데이트를 진행한다
 
-    kubectl describe pods
-    get 명령어에서 좀 더 자세한 정보를 볼 수 있다
-
-    kubectl logs
-    팟 안에서의 로그를 확인 할 수 있다(팟의 로그)
-
-    kubectl get deployment
-    배포 리스트 확인
-
-    kubectl expose deployment nginx --port 80 --type LoadBalancer
-    디플로이먼트를 공개한다
-    pod를 노드 상에 배치시키고 '서비스를 만들어서' '공개'시킨다
-    사용자에게 트래픽을 받게 한다
-
-        Use the kubectl expose command to expose the nginx container outside Kubernetes.
-        Kubernetes created a service and an external load balancer with a public IP address attached to it
-        (you will learn about services later). The IP address remains the same for the life of the service. 
-        Any client who hits that public IP address (for example an end user or another container) is routed
-        to pods behind the service. In this case, that would be the nginx pod.
-
-    kubectl scale deployment nginx --replicas 3
-    Kubectl scale 명령 다음에 배포 유형, 이름 및 원하는 인스턴스 수를 사용합니다.
-    Kubernetes supports an easy-to-use workflow out of the box using the kubectl run, expose, and scale commands.
-    Explore the built-in pod documentation using the kubectl explain command.
-
-    kubectl get pods -l label이름
-    kubectl get service -l label이름
-    -l 레이블 이름을 줌으로써 파드이름 대신 정보를 볼 수 있다
+    이때 kubectl get pods 명령어로 잠깐 파드의 움직임을 살펴 볼 수 있는데, 
+    이때 'replicas 에 지정 한 갯수 만큼 파드를 생성'하여 새로운 이미지를 유지 시킨 후
+    이전의 이미지가 저장된 pod는 삭제 시켜준다
+    이전에 작업한 내용이 남지 않는 단점이 있다
     
-    kubectl delete service -l label 이름
-    라벨이름 서비스 제거하기
+2. 블루 그린 업데이트
 
-    kubectl explain pods
-    While you explore the Kubernetes API, kubectl explain will be one of the most common commands you use.
-    Note how you used it above to investigate an API object and how you will use it below to check on various properties of API objects.
-    팟에 대한 설명?
-
-    kubectl explain pods.spec.containers
-    Use the kubectl explain command with the .spec option to view more information about API objects. This example inspects containers.
-    팟의 컨테이너 내용?
-
-    kubectl create -f pods/monolith.yaml
-    팟 만들기 
-
-    kubectl discribe pods monolith
-    팟을 실행하기?
-
-    kubectl exec monolith --stdin --tty -c monolith /bin/sh
-    팟안의 컨테이너의 커맨드 실행
-
-    
+3. 
