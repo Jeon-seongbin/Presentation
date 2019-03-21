@@ -1,0 +1,29 @@
+version: "3"
+services:
+  web:
+    # replace username/repo:tag with your name and image details
+    image: wk0012345/get-started:part2
+    deploy:
+      # number of instance
+      replicas: 7
+      resources:
+        limits:
+          #cpu 자원
+          cpus: "0.1"
+          #메모리
+          memory: 50M
+      restart_policy:
+        condition: on-failure
+    ports:
+      # 현재 컴퓨터의 4000번 포트를 컨테이너의 80번 포트로 해라
+      # 80 번 포트는 dockerfilelesson1의 expose에서 설정해줌 
+      # replicas 의 컨테이너는 호스트의 80번 포트를 공유
+      - "4000:80"
+    networks:
+      # 로드벨런싱이 되는 네트워크가 필요한데 이름은 webnet이고 내부적으로 웹의 80 번 포트를 웹이라는 80번 포트로 퍼블리싱
+      #네트워크는 웹넷을 써라
+      - webnet
+networks:
+  #웹넷의 설정
+  #로드벨런싱이 되는 기본 네트웍 설정
+  webnet:
