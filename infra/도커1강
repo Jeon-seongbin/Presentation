@@ -76,6 +76,9 @@ docker 기초 1
     docker rm -f 컨테이너이름
     컨테이너이름을 끄고 삭제함
 
+    docker exec -it 컨테이너이름 bash
+    컨테이너이름의 bash를 실행한다
+
 도커 허브, 도커 레지스트리
 
 도커 허브

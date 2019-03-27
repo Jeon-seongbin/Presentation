@@ -1,5 +1,7 @@
 쿠버네티스 2강 
 
+https://docs.google.com/presentation/d/1FVHcAkjbiOWt7wozXfVl8Da9m9NgHSeZ85PznVKIo0w/edit#slide=id.g5202183cf3_3_4
+
 명령어 정리
     개행하고 적어놓은 영어는 각각 코세라 강의와 홈페이지 튜토리얼에서 첨부 한 것
 
@@ -38,7 +40,7 @@
 
     kubectl get (pods, deployments, services)
     pod, deployment, service 등 일반적인 정보를 얻는 명령어
-    
+
     kubectl describe (pods, deployments, services)
     get 명령어에서 좀 더 자세한 정보를 얻는 명령어
 
