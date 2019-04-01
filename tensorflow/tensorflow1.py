@@ -50,6 +50,7 @@ y = (a + b)/2
 sess = tf.Session()
 print( sess.run(y,feed_dict={a : mathScore , b : englishScore}))
 '''
+'''
 import tensorflow as tf
 a = tf.constant(2)
 b = tf.constant(3)
@@ -71,3 +72,4 @@ c = tf.truediv(a,b)
 print(sess.run(c))
 c = tf.mod(a,b)
 print(sess.run(c))
+'''
