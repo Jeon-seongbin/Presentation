@@ -1,4 +1,5 @@
 # Hypothesis using matrix
+# https://developers.google.com/machine-learning/crash-course/prereqs-and-prework?hl=ko
 '''
 https://www.youtube.com/watch?v=fZUV3xjoZSM
 
@@ -52,5 +53,84 @@ Example) N(3, 2/3) 분포, 즉 평균이 3이고 분산이 2/3인 분포에서 �
 
 예측은 이제 여기서 구해진 가중치로 미래에 들어오는 X 값들로부터 Y 값을 예측을 하는 것인데
 이 예측값이 예측값이 어느 구간안에 있을 확률, 즉 “구간 추정”에 따른 confidence interval 을 구해서 실제로 있을만한 값인지 아닌지를 보는 것입니다.
+'''
 
 '''
+리니어 리그레션
+
+선형회귀
+	선형 적인 회귀
+	
+	회귀 연속적인 모델의 값 예측(Hypothesis)
+
+	즉 선형적인 연속적의 모델의 값 예측
+
+y = ax + b
+
+x = 데이터
+y = 결과값
+b = 절편
+
+코스트 우리가 세운 가설(Hypothesis)과 실제 데이터 값이 얼마나 차이가 나는지에 대한 값
+
+
+코스트는 가설- 실제값의 차이를 제곱한 값을 모두 더하여 데이터의 갯수만큼 나눔
+
+코스트 함수를 보면 2차함수가 나오는데 기울기가 가장 적은 곳을 찾아냄
+
+경사 하강법 그레디언트 디센트를 이용
+
+어떤 점을 잡더라도 경사를 보아서 옆쪽으로 계속 이동함
+
+리니어 리그레션
+
+
+학습을 한다는것은 우리가 가장 적은 코스트를 찾아 낸다는것
+
+
+
+'''
+
+
+import tensorflow as tf
+# Matrix 
+xData =[[73.,80.,75.],
+        [93.,88.,93.],
+		[89.,91.,90.],
+		[96.,98.,100.],
+		[73.,66.,70.]]
+yData =[[152.],
+		[185.],
+		[180.],
+		[196.],
+		[142.]]
+
+X = tf.placeholder(tf.float32,shape=[None,3])
+Y = tf.placeholder(tf.float32,shape=[None,1])
+
+W = tf.Variable(tf.random_normal([3,1], name='weight'))
+b = tf.Variable(tf.random_normal([1]), name='bias')
+
+#hypothesis (선형회귀의 예측 선 (가설))
+hypothesis = tf.matmul(X,W) + b
+
+#Simplified cost/loss function (코스트 함수)
+cost = tf.reduce_mean(tf.square(hypothesis-Y))
+
+#Minimize (선형회귀를 추정값을 구하기 위하여 씀)
+optimizer = tf.train.GradientDescentOptimizer(learning_rate=1e-5)
+
+#cost를 최소화 하는 작업
+train = optimizer.minimize(cost)
+
+# session 초기화
+sess = tf.Session()
+
+# 변수 초기화
+sess.run(tf.global_variables_initializer())
+
+for step in range(5001):
+	cost_val , hy_val , _ = sess.run([cost,hypothesis,train],feed_dict={X:xData,Y:yData})
+
+	if step % 50 == 0:
+		print(step,"cost : " , cost_val , "\n Prediction: \n",hy_val)
