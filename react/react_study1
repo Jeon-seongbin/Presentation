@@ -1,0 +1,18 @@
+2019/05/27
+리엑트 컴포넌트
+
+리엑트는 테그를 정의할 수 있음(컴포넌트 단위)
+
+컴포넌트는 리엑트를 임포트 함으로써 정의 가능
+
+import 컴포넌트 이름 from './컴포넌트 파일.js'
+
+컴포넌트의 구성
+class TagName extends Component{
+여기에서 꼭 render(표현하다)라는 함수를 두어야 하고
+return 안에 html코드(jsx)가 들어감
+
+jsx에서는 마지막으로 묶는 테그 1개만 이용가능
+
+export default 컴포넌트 이름
+
