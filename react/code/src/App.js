@@ -3,16 +3,28 @@ import logo from './logo.svg';
 import './App.css';
 import Movie from './Movie.js'
 
+
+const movieTitles = [
+  'matrix',
+  'full metal jacket',
+  'old boy',
+  'star wars'
+]
+
+const movieImages =[
+  'https://avatars1.githubusercontent.com/u/9919?s=200&v=4',
+  'https://cdn-images-1.medium.com/max/1600/1*Z55pTi7p9T9HyTpDBtSVGg.png',
+  'https://en.wikipedia.org/wiki/File:Firefox_Logo,_2017.svg',
+  'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/image/AppleInc/aos/published/images/m/bp/mbp13/space/mbp13-space-select-201807?wid=904&hei=840&fmt=jpeg&qlt=80&op_usm=0.5,0.5&.v=1529520054457'
+]
+
 function App() {
   return (
     <div className="App">
-    <Movie/>
-    <Movie/>
-    <Movie/>
-    <Movie/>
-    <Movie/>
-    <Movie/>
-    <Movie/>
+    <Movie title={movieTitles[0]} poster={movieImages[0]} />
+    <Movie title={movieTitles[1]} poster={movieImages[1]} />
+    <Movie title={movieTitles[2]} poster={movieImages[2]} />
+    <Movie title={movieTitles[3]} poster={movieImages[3]} />
     
       <nav>
         <ol>
