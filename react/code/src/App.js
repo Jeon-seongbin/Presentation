@@ -6,7 +6,6 @@ import Movie from './Movie.js'
 class App extends Component{
 
   state = {
-    
   };
 
   componentDidMount(){
@@ -34,8 +33,6 @@ class App extends Component{
             poster : "https://rzzy0b736k-flywheel.netdna-ssl.com/wp-content/uploads/2019/01/TF2019_01_cvrA.jpg"
           }
         ]
-
-
       })
     },2000)
   }

@@ -4,4 +4,18 @@ loading state
 
 true false 삼항연산자를 이용하여 컴포넌트 데이터(state의 데이터) 가 있으면 있는것 표시 없으면 없는것 표시
 
+State가 없는 컴포넌트
+
+컴포넌트는 state를 가질수도 있고 안 가질 수도 있다
+
+function testComponent({params}){
+
+	return (
+		tags
+	);
+}
+
+이러한 것들은 componentdidupdate 등의 함수를 가지지 않는다
+
+간단한 컴포넌트에 쓰임
 

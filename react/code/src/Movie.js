@@ -1,48 +1,30 @@
-import React ,{Component} from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import './Movie.css';
 
-class Movie extends Component{
-    
-    state = {
-        greeting : 'hello'
-    }
-
-    componentDidMount(){
-        setTimeout(()=> {
-            this.setState({
-                greeting : 'hello again'
-            });
-        },3000);
-    }
-
-    static propTypes = {
-        title : PropTypes.string.isRequired,
-        poster : PropTypes.string.isRequired
-    }
-
-    render(){
-        return(
-            <div>
-                {this.state.greeting}
-                <MoviePoster poster={this.props.poster}/>
-                <h1>hello movie {this.props.title}</h1>
-            </div>
-        );
-    }
+//Does not have State Component(function Component)
+function Movie({title, poster}){
+    return(
+        <div>
+            <MoviePoster poster={poster}/>
+            <h1>hello movie {title}</h1>
+        </div>
+    );
 }
 
-class MoviePoster extends Component{
+function MoviePoster({poster}){
+    return (
+        <img src={poster} alt="movie poster" />
+    );
+}
 
-    static propTypes ={
-        poster : PropTypes.string.isRequired
-    }
+MoviePoster.propTypes = {
+    poster : PropTypes.string.isRequired
+}
 
-    render(){
-        return(
-          <img src={this.props.poster} />
-        );
-    }
+Movie.propTypes = {
+    title : PropTypes.string.isRequired,
+    poster : PropTypes.string.isRequired
 }
 
 export default Movie;
