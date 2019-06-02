@@ -35,17 +35,21 @@ lists.map(list => {
 으로 반복 가능
 
 리엑트는 PropTypes를 가질 수 있는데
-부모 컴포넌트에서 값을 받을때 타입을 지정할 수 있다 (안쓰면 오류)
+부모 컴포넌트에서 인수를 이용해 값을 받을때 타입을 지정할 수 있다 (안쓰면 오류)
+이 타입에 isRequired옵션으로 필수 옵션인 것을 설정 할 수 있다
+부모 컴포넌트에서 받는 정보를 체크 할 수 있다
 
-import PropTypes from 'prop-types';
+import PropTypes from 'prop-types'
 
-class Test extends Component {
+class Movie extends Component{
 
-	static propTypes = {
+	static PropTypes ={
 		title : PropTypes.string.isRequired,
-		posters : PropTypes.number.isRequired
+		poster : PropTypes.number.isRequired
 	}
+
 }
+
 
 라이프 사이클
 
@@ -74,7 +78,19 @@ state 가 변경하면 컴포넌트는 다시 render를 한다
 
 state를 직접적으로 쓰면 안됨
 
-setState를 직접 설정하고
+this.setState({
+
+}) 라는 식으로 설정한
+
 
 업데이트 할 때마다 새로운 setState와 render를 생성한다
+
+
+자바스크립트 
+	{} 객체 리터럴
+	객체는 key value형식으로 구성 되어져 있음
+
+...문법 습득 해야함
+ 
+
 

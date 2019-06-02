@@ -8,10 +8,6 @@ class Movie extends Component{
         greeting : 'hello'
     }
 
-    componentWillMount(){
-        console.log("component will mount render 의 동작 전에 넣는다");
-    }
-
     componentDidMount(){
         setTimeout(()=> {
             this.setState({
@@ -26,8 +22,6 @@ class Movie extends Component{
     }
 
     render(){
-        console.log("render")
-        console.log(this.props)
         return(
             <div>
                 {this.state.greeting}
