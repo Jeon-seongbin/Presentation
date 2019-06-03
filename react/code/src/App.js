@@ -11,27 +11,28 @@ class App extends Component{
   componentDidMount(){
    this._getMovies();
   }
-/*
-  async _getMovies = () => {
-    await movies = await this._callApi();
-    //callApi 기능이 '끝나는 걸' 기다림
 
+  _getMovies = async () => {
+    //call api의 return value를 movies에 set
+    const movies = await this._callApi();
+
+    //callApi 기능이 '끝나는 걸' 기다림 완료 되기를 기다림
+    this.setState({
+      movies: movies
+    });
   }
-*/
 
   _callApi = () => {
-    fetch('https://yts.am/api/v2/list_movies.json?sort_by=rating')
+    return fetch('https://yts.am/api/v2/list_movies.json?sort_by=rating')
     .then(response => response.json())
-    .then(data =>{
-      console.log(data);
-    })
+    .then(json => json.data.movies)
     .catch(err => console.log(err));
   }
 
-
   _renderMovies = () => {
-    const movies = this.state.movies.map( (movie, index) =>{
-      return <Movie title={movie.title} poster={movie.poster} key={index} /> 
+    const movies = this.state.movies.map((movie, index) =>{
+      console.log(movie);
+      return <Movie title={movie.title} poster={movie.large_cover_image} key={index} /> 
     });
     return movies;
   }
