@@ -5,37 +5,29 @@ import Movie from './Movie.js'
 
 class App extends Component{
 
-  state = {
-  };
+  state ={
+  }
 
   componentDidMount(){
-    setTimeout(() => {
-      this.setState({
-        movies : [
-          {
-            title : 'Metrix',
-            poster : 'https://avatars1.githubusercontent.com/u/9919?s=200&v=4'
-          },
-          {
-            title : 'full metal jacket',
-            poster : 'https://cdn-images-1.medium.com/max/1600/1*Z55pTi7p9T9HyTpDBtSVGg.png'
-          },
-          {
-            title : 'old boy',
-            poster : 'https://en.wikipedia.org/wiki/File:Firefox_Logo,_2017.svg'
-          },
-          {
-            title : 'star wars',
-            poster : 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/image/AppleInc/aos/published/images/m/bp/mbp13/space/mbp13-space-select-201807?wid=904&hei=840&fmt=jpeg&qlt=80&op_usm=0.5,0.5&.v=1529520054457'
-          },
-          {
-            title:"transformer",
-            poster : "https://rzzy0b736k-flywheel.netdna-ssl.com/wp-content/uploads/2019/01/TF2019_01_cvrA.jpg"
-          }
-        ]
-      })
-    },2000)
+   this._getMovies();
   }
+/*
+  async _getMovies = () => {
+    await movies = await this._callApi();
+    //callApi 기능이 '끝나는 걸' 기다림
+
+  }
+*/
+
+  _callApi = () => {
+    fetch('https://yts.am/api/v2/list_movies.json?sort_by=rating')
+    .then(response => response.json())
+    .then(data =>{
+      console.log(data);
+    })
+    .catch(err => console.log(err));
+  }
+
 
   _renderMovies = () => {
     const movies = this.state.movies.map( (movie, index) =>{
