@@ -25,7 +25,7 @@ function Movie({title, poster, genres, synopsis}){
     );
 }
 
-{/* className은 정상적인 css에서 class를 말한다 
+{/* className은 정상적인 css에서 class를 말한다
 JSX에서는 className이라고 씀 */}
 
 ///////////////////////////////////////////////////
