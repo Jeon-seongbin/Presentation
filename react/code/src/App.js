@@ -46,7 +46,13 @@ class App extends Component{
     const movies = this.state.movies.map((movie) =>{
       console.log(movie);
       //컴포넌트에 index를 이용하는것은 느리기 때문에 안좋다
-      return <Movie title={movie.title} poster={movie.large_cover_image} key={movie.id} /> 
+      return <Movie 
+        title={movie.title}
+        poster={movie.medium_cover_image}
+        genres={movie.genres}
+        synopsis={movie.synopsis}
+        key={movie.id}
+      />
     });
     return movies;
   }
