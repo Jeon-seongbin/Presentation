@@ -60,17 +60,6 @@ class App extends Component{
     return (
       <div className="App">
         {this.state.movies ? this._renderMovies() : "loading"}
-        <nav>
-          <ol>
-            <li>html</li>
-            <li>javascript</li>
-            <li>css</li>
-          </ol>
-        </nav>
-        <article>
-          <h2>welcome</h2>
-          hello react
-        </article>
       </div>
     );
   }
