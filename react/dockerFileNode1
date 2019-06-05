@@ -1,0 +1,3 @@
+FROM node:10.12
+RUN mkdir /code1
+WORKDIR /code1
