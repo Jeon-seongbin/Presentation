@@ -1,9 +1,6 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
-
-
-# Created by https://www.gitignore.io/api/node,macos,python,visualstudiocode
-# Edit at https://www.gitignore.io/?templates=node,macos,python,visualstudiocode
+# Created by https://www.gitignore.io/api/vim,node,macos,python
+# Edit at https://www.gitignore.io/?templates=vim,node,macos,python
 
 ### macOS ###
 # General
@@ -241,38 +238,23 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
-### VisualStudioCode ###
-.vscode/*
-!.vscode/settings.json
-!.vscode/tasks.json
-!.vscode/launch.json
-!.vscode/extensions.json
+### Vim ###
+# Swap
+[._]*.s[a-v][a-z]
+[._]*.sw[a-p]
+[._]s[a-rt-v][a-z]
+[._]ss[a-gi-z]
+[._]sw[a-p]
 
-### VisualStudioCode Patch ###
-# Ignore all local history of files
-.history
+# Session
+Session.vim
 
-# End of https://www.gitignore.io/api/node,macos,python,visualstudiocode
+# Temporary
+.netrwhist
+*~
+# Auto-generated tag files
+tags
+# Persistent undo
+[._]*.un~
 
-
-# dependencies
-/node_modules
-/.pnp
-.pnp.js
-
-# testing
-/coverage
-
-# production
-/build
-
-# misc
-.DS_Store
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
-
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
+# End of https://www.gitignore.io/api/vim,node,macos,python
