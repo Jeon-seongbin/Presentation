@@ -4,16 +4,15 @@ class TOC extends Component{
     render(){
         const contents = this.props.contents;
         {/* 변수 등등은 render 에 넣는다 */}
-        
         return (
             <nav>
                 <ul>
-                    {this.props.contents.map((content) =>{
-                        return <li>
+                    {this.props.contents.map((content, index) =>{
+                        return <li key={index}>
                                     <a href={'/content/'+content.id}
                                         onClick={function(e){
                                             e.preventDefault();
-                                            this.props.onChangePage()
+                                            this.props.onChangePage(content.id)
                                         }.bind(this)}>{content.title}
                                     </a>
                                 </li>

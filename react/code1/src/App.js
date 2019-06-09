@@ -32,7 +32,8 @@ class App extends Component {
 */
     super(props);
     this.state = {
-      mode : 'read',
+      mode : 'welcome',
+      selected_content_id: 0,
       welcome : {title : 'welcome', desc : 'welcome HTML'},
       subject : {title : 'web', sub : 'world wide web'},
       contents : [
@@ -46,7 +47,7 @@ class App extends Component {
   render(){
     {/* return 에서는 최상위 코드 한개를 가진다 */}
     {/* 자바스크립트의 코드로써 실행하기 위해선 중괄호를 쓴다 */}
-    
+
     var _title = null;
     var _desc = null;
 
@@ -54,8 +55,9 @@ class App extends Component {
       _title = this.state.welcome.title;
       _desc = this.state.welcome.desc;
     } else if(this.state.mode === 'read'){
-      _title = this.state.contents[0].title;
-      _desc = this.state.contents[0].desc;
+      let content = this.state.contents.filter(content => content.id == this.state.selected_content_id)[0];
+      _title = content.title;
+      _desc = content.desc;
     }
 
     return (
@@ -67,11 +69,14 @@ class App extends Component {
             this.setState({mode : 'welcome'})
           }.bind(this)}
           />
-          <TOC 
-            onChangePage={function(){
+          {/*1. onChangePage 이 컴포넌트가 이벤트를 전달하는 props이다(추가) */}
+          <TOC
+            onChangePage={function(id){
               this.setState({
-                mode:'read'
-              })
+                mode:'read',
+                selected_content_id : Number(id)
+              });
+              //setState 메소드로 값을 바꾸어야 리엑트가 state의 값이 바뀌었는지 알 수 있다
             }.bind(this)}
             contents={this.state.contents}/>
           <Content title={_title} desc={_desc} />
