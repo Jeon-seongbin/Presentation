@@ -1,0 +1,26 @@
+body{
+    background-color: #eff3f7;
+}
+
+.Movie{
+    margin : 10%;
+}
+
+.Movie__Columns-container{
+    display: table;
+    width: 100%;
+}
+.Movie__Columns {
+    display: table-cell;
+}
+
+.Movie__Info{
+    position: relative;
+    margin-left: 5%;
+    margin-bottom: 10%;
+    float:left;
+}
+
+img{
+    box-shadow: 5px 5px 3px grey;
+}

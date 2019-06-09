@@ -5,8 +5,8 @@ import Movie from './Movie.js'
 
 class App extends Component{
 
-  state ={
-  }
+  //state
+  state = {}
 
   componentDidMount(){
    this._getMovies();
@@ -26,14 +26,15 @@ class App extends Component{
     //const movies = this._callApi();
     //await를 안 썻을 경우 현재 리엑트의 state에 값이 안 들어가 있는 상태로 this.state가 실행이
     //되어버리기 때문에 react코드에서 에러가 난다
-
     this.setState({
       movies: movies
     });
   }
 
   _callApi = () => {
-    return fetch('https://yts.am/api/v2/list_movies.json?sort_by=rating')
+    //This URL is change every month I think
+    const URL = 'https://yts.lt/api/v2/list_movies.json?sort_by=download_count';
+    return fetch(URL)
     //fetch를 하면 promise라는 객체가 나온다
     //promise 를 쓰면 then을 쓸 수 있다
     .then(response => response.json())
@@ -44,7 +45,6 @@ class App extends Component{
 
   _renderMovies = () => {
     const movies = this.state.movies.map((movie) =>{
-      console.log(movie);
       //컴포넌트에 index를 이용하는것은 느리기 때문에 안좋다
       return <Movie 
         title={movie.title}
@@ -56,6 +56,7 @@ class App extends Component{
     });
     return movies;
   }
+
   render(){
     return (
       <div className="App">
