@@ -1,16 +1,15 @@
 import React,{Component} from 'react'
 
 class TOC extends Component{
-    
+
     shouldComponentUpdate(newProps){
         if(this.props.contents === newProps.contents){
             return false;
         }
         return true;
     }
-    
+
     render(){
-        const contents = this.props.contents;
         {/* 변수 등등은 render 에 넣는다 */}
         return (
             <nav>
@@ -28,7 +27,7 @@ class TOC extends Component{
                     })}
                 </ul>
             </nav>
-         );
+        );
     }
 }
 
