@@ -118,6 +118,23 @@ getContent(){
           }}
         contents={this.state.contents}/>
         <Control onChangeMode={(_mode)=>{
+          if(_mode === 'delete'){
+            if(window.confirm('really?')){
+              const deleteContent = Array.from(this.state.contents);
+              for(let i = 0 ; i < deleteContent.length ; i++){
+                if(deleteContent[i].id === this.state.selected_content_id){
+                  deleteContent.splice(i , 1);
+                  break;
+                }
+              }
+              this.setState({
+                mode : 'welcome',
+                contents : deleteContent
+              })
+              alert("deleted!");
+            }
+            return;
+          }
           this.setState({
             mode : _mode
           });
