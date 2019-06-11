@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <title></title>
+   <script type="text/javascript"></script>
+   <script>
+      function day_add(value){
+         const arr =[]
+         arr.push(value.substring(0,4));
+         arr.push(value.substring(4,6));
+         arr.push(value.substring(6,8));
+         const dt = new Date(arr[0],arr[1]-1,arr[2]);
+         const dt_v = new Date(arr[0],arr[1]-1,arr[2]);
+         dt_v.setDate(dt.getDate()+1);
+         var y = dt_v.getFullYear();
+         var m = ("00" + (dt_v.getMonth()+1)).slice(-2);
+         var d = ("00" + dt_v.getDate()).slice(-2);
+         var result = y   + m  + d;
+         return result
+      }
+
+      function day_minus(value){
+         const arr =[]
+         arr.push(value.substring(0,4));
+         arr.push(value.substring(4,6));
+         arr.push(value.substring(6,8));
+         const dt = new Date(arr[0],arr[1]-1,arr[2]);
+         const dt_v = new Date(arr[0],arr[1]-1,arr[2]);
+         dt_v.setDate(dt.getDate()-1);
+         var y = dt_v.getFullYear();
+         var m = ("00" + (dt_v.getMonth()+1)).slice(-2);
+         var d = ("00" + dt_v.getDate()).slice(-2);
+         var result = y   + m  + d;
+         return result
+      }
+
+      alert("add   :" + day_add("20190228"));
+      alert("minus :" + day_minus("20190301"));
+
+   </script>
+</head>
+<body>
+</body>
+</html>
