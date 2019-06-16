@@ -54,12 +54,18 @@ getContent(){
     _title = this.state.welcome.title;
     _desc = this.state.welcome.desc;
     _article = <ReadContent title={_title} desc={_desc} />;
-  } else if (this.state.mode === 'read'){
+  }
+  
+  
+  else if (this.state.mode === 'read'){
     let content = this.state.contents.filter(content => content.id === this.state.selected_content_id)[0];
     _title = content.title;
     _desc = content.desc;
     _article = <ReadContent title={_title} desc={_desc} />;
-  } else if (this.state.mode === 'create'){
+  }
+  
+  
+  else if (this.state.mode === 'create'){
     _article = <CreateContent onSubmit={(_title,_desc) => {
       this.setState({
         contents: [
@@ -68,7 +74,10 @@ getContent(){
         //push 를 쓰지 말고 concat 함수를 이용 원본데이터 이용하지 않고 변경
       });
     }}/>;
-  } else if (this.state.mode === 'update'){
+  } 
+  
+  
+  else if (this.state.mode === 'update'){
     if(this.state.contents.length === 0 ){
       return;
     }
@@ -108,6 +117,9 @@ getContent(){
           }}
         />
         {/*1. onChangePage 이 컴포넌트가 이벤트를 전달하는 props이다(추가) */}
+        
+        
+        
         <TOC
           onChangePage={(id) => {
             this.setState({
@@ -117,6 +129,9 @@ getContent(){
             //setState 메소드로 값을 바꾸어야 리엑트가 state의 값이 바뀌었는지 알 수 있다
           }}
         contents={this.state.contents}/>
+
+
+
         <Control onChangeMode={(_mode)=>{
           if(_mode === 'delete'){
             if(window.confirm('really?')){
@@ -139,6 +154,9 @@ getContent(){
             mode : _mode
           });
         }}/>
+
+
+
         {this.getContent()}
       </div>
     );

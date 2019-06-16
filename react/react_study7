@@ -1,0 +1,46 @@
+2019 06 16 redux
+
+단 하나의 상태를 가짐
+상태는 객체(저장소)로 정의
+
+단 한개의 상태를 바꿈에 따라서 어플리케이션의 모습이 바뀐다
+
+단 하나의 state를 유지하는것을 통해서 어플리케이션의 복잡도를 낮춘다 라는것이 컨셉
+
+state는 너무나도중요해서
+
+정해진 getter setter로 값을 수정할 수 있고
+
+값이 바뀔 떄 마다 컴포넌트? 요소 들에게 알려준다
+
+각각의 요소들은 자기 할 일만 한다 
+
+부품에만 집중하면 된다
+
+중앙집중적인 store를 가지고 있다
+
+
+리덕스는 store의 상태를 바꾸는것이 핵심
+
+
+store(저장소)를 만들면 내부적으로 state가 생기고,
+이 state값을 가지고 올려면 getState를 써야 한
+그리고 reducer(함수) 를 통해서 state 를 만드는데 
+여기서 state가 undefined라면 초기화를 할 수 있다
+
+reduce
+이전의 state와 action을 받아서 다음의 state 값을 return해 주면
+return 된 값이 store(state)에 저장된다
+
+render
+state값이 바뀔때마다 render에게 통보받아서
+state값을 들고와서 화면에 표시한다
+
+store.subscribe등록하면
+
+store에 값이 바뀔때마다 함수가 호출이 된다
+
+그렇게되면 다른게 바뀌어도 신경 안써도 된다
+
+
+
