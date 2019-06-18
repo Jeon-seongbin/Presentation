@@ -8,13 +8,11 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/redux/4.0.1/redux.js"></script>
 </head>
 <body>
-
     <div id="subject"></div>
     <div id="toc"></div>
     <dvi id="control"></dvi>
     <dvi id="content"></dvi>
     <script>
-
         function subject(){
             document.querySelector("#subject").innerHTML = `
             <header>
@@ -23,10 +21,6 @@
             </header>
             `;
         }
-
-
-
-    
         function TOC(){
             var state = store.getState();
             var i = 0;
@@ -50,7 +44,6 @@
             </nav>
             `;
         }
-
         function control(){
             document.querySelector("#control").innerHTML=`
             <ul>
@@ -73,7 +66,6 @@
  
             `;
         }
-
         function article(){
             var state = store.getState();
 
@@ -86,21 +78,14 @@
                     ${test.desc}
                 </article>
                 `;
-            }
-            
-            
-            else if(state.mode ==='welcome'){
+            }else if(state.mode ==='welcome'){
                 document.querySelector("#content").innerHTML=`
                 <article>
                     <h2>hello</h2>
                     redux
                 </article>
                 `;
-            }
-            
-            
-            
-            else if( state.mode === 'create'){
+            }else if( state.mode === 'create'){
                 
                 document.querySelector("#content").innerHTML=`
                 <article>
@@ -151,26 +136,11 @@
                     mode : 'read' ,
                     max_id: newMaxId,
                     contents: newContents});
-
-
             }else if( action.type=="CHANGE_MODE"){
                 newState = Object.assign({},state , {
                     mode : action.mode
                 })
-            }
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            else if(action.type==="DELETE"){
+            }else if(action.type==="DELETE"){
                 var newContents = [];
                         var i = 0;
                         while(i < state.contents.length){

@@ -117,9 +117,7 @@ getContent(){
           }}
         />
         {/*1. onChangePage 이 컴포넌트가 이벤트를 전달하는 props이다(추가) */}
-        
-        
-        
+
         <TOC
           onChangePage={(id) => {
             this.setState({
@@ -129,8 +127,6 @@ getContent(){
             //setState 메소드로 값을 바꾸어야 리엑트가 state의 값이 바뀌었는지 알 수 있다
           }}
         contents={this.state.contents}/>
-
-
 
         <Control onChangeMode={(_mode)=>{
           if(_mode === 'delete'){
@@ -154,8 +150,6 @@ getContent(){
             mode : _mode
           });
         }}/>
-
-
 
         {this.getContent()}
       </div>

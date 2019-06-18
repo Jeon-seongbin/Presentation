@@ -1,0 +1,13 @@
+version: '3'
+
+services: 
+  react_study2:
+    container_name: react_study2
+    build:
+      context: .
+      dockerfile: dockerFileNode2
+    volumes: 
+      - ./code2:/code2
+    tty: true
+    ports:
+      - 3000:3000
