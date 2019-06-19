@@ -1,0 +1,31 @@
+2019-06-19
+
+store = reducer(state,action)
+store 은 state인가?
+
+reducer
+엑션의 상태를 보고 state를 업데이트 시켜서 리턴한다
+
+Action
+어떤 일을 해야 하는지 정의
+
+dispatch
+엑션을 이용하여 리듀서를 실행시킨다
+
+
+흐름
+0. 웹 실행 - createStore가 실행되어 store가 생성됨 - 
+
+1. 사용자가 click
+2. onClick 실행
+3. action을 설정하고 store.dispatch에 주입
+	store.dispatch(action)
+4. dispatch가 불려지면 reducer가 실행됨
+5. reducer가 실행되면 dispatch에서 받은 action을 이용하여(dispatch에서 파라메터로 설정한 변수들)
+	state를 '새로'만들어냄
+6. subscribe에 통지하여 각 컴포넌트가 알아서 실행됨
+
+리엑트로서의 이동은
+리엑트의 state 역할을 redux가 하게 되는것 같음
+redux의 구조와 리엑트의 구조는 분리되어있음
+

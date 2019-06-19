@@ -7,7 +7,7 @@ class Counter extends Component {
     render(){
         return (
             <div>
-                <Value number='1'/>
+                <Value number='0'/>
                 <Control/>
             </div>
         );
