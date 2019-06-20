@@ -8,8 +8,6 @@ import {Provider} from 'react-redux';
 
 import reducers from './reducers';
 
-const store = createStore(reducers)
-//스토어는 리듀서에서 만들어진다?
 
 //dispatch(action)
 //action 을 리듀서로 보냄
@@ -22,6 +20,8 @@ const store = createStore(reducers)
 
 //replaceReducer(nextReducer)
 
+const store = createStore(reducers)
+//스토어는 리듀서에서 만들어진다?
 ReactDOM.render(
     <Provider store={store}>
         <App />

@@ -2,7 +2,7 @@ import React ,{Component}from 'react';
 import PropTypes from 'prop-types';
 
 const propTypes = {
-  number : PropTypes.string.isRequired
+  number : PropTypes.number.isRequired
 }
 
 const defaultPorps = {

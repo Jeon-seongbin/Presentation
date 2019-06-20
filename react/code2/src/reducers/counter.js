@@ -19,9 +19,8 @@ const initialState = {
 export default function counter(state = initialState, action){
 // es 6 default arguement
 //state가 undefined라면 initialState
-
     switch(action.type){
-        case types.DECREMENT:
+        case types.INCREMENT:
             return {
                 ...state ,
                 number: state.number + 1,

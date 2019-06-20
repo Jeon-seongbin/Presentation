@@ -1,7 +1,7 @@
 2019-06-19
 
 store = reducer(state,action)
-store 은 state인가?
+store는 상태 저장소이다
 
 reducer
 엑션의 상태를 보고 state를 업데이트 시켜서 리턴한다
