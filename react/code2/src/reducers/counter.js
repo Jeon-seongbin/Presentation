@@ -7,13 +7,6 @@ import * as types from '../actions/ActionTypes';
 //초기형태
 const initialState = {
     number : 0,
-    dumb : 'dumbdumb',
-    dumbObject : {
-        d:0,
-        u:1,
-        m:2,
-        b:3,
-    }
 }
 
 export default function counter(state = initialState, action){
@@ -24,7 +17,6 @@ export default function counter(state = initialState, action){
             return {
                 ...state ,
                 number: state.number + 1,
-                dumbObject :{ ...state.dumbObject, u:0}
             };
         case types.DECREMENT:
             return {
