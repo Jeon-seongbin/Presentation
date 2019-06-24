@@ -10,7 +10,9 @@ function Nav() {
 
     return (
         <nav>
-            <h1>Logo</h1>
+            <Link to="/">
+                <h1>Logo</h1>
+            </Link>
             <ul className="nav-links">
             <Link to="/about" style={newStyle}>
             {/* Anchor tag대신에 Link를 달아서 라우터를 실행시킨다 */}
@@ -20,7 +22,7 @@ function Nav() {
                 <li>Shop</li>  
             </Link>
         </ul>
-</nav>
+        </nav>
     );
 }
 
