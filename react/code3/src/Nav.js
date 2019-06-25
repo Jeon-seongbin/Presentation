@@ -21,6 +21,9 @@ function Nav() {
             <Link to="/shop" style={newStyle}>
                 <li>Shop</li>  
             </Link>
+            <Link to="/myPage" style={newStyle}>
+                <li>My Page</li>
+            </Link>
         </ul>
         </nav>
     );

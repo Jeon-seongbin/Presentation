@@ -5,6 +5,8 @@ import Nav from './Nav';
 import Shop from './Shop';
 import About from './About';
 import ItemDetail from './ItemDetail';
+import Mypage from './MyPage';
+import NoMatch from './NoMatch';
 
 import {BrowserRouter as Router ,Switch, Route} from 'react-router-dom';
 
@@ -39,6 +41,11 @@ function App() {
           <Route path="/shop/:id" component={ItemDetail}/>
           {/* shop을 치고  뒤에 아무거나 올 때 id로 입력하게 한다 */}
           {/* 이때 URL shop 과 path가 같으니 shop에 exact를 걸어준다 */}
+          {/* url parameter */}
+          
+          <Route path="/myPage" component={Mypage} />
+          <Route component={NoMatch} />
+          {/* URL매치가 안 되었을때 */}
         </Switch>
       </div>
     </Router>
