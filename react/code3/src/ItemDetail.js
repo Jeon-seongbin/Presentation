@@ -16,7 +16,7 @@ function Item({ match }) {
     const fetchItem = async () =>{
         const ITEM_URL = `https://fortnite-public-api.theapinetwork.com/prod09/item/get?ids=${match.params.id}`;
         //api생겨먹은게 이렇게 되어 있어서 이렇게 쓴 것
-
+        //
         const item  = await fetch(ITEM_URL)
                                 .then(response => response.json())
                                 .catch(err => console.log(err))
