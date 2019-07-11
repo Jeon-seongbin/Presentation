@@ -1,0 +1,41 @@
+react 2019 07 11
+
+react hooks
+
+const app = () => {
+	
+	//react hooks 개념
+	//react useState
+	const [var, func] = useState(0);
+	const [var1, func1] = useSate(0);
+	const [first, setFirst] = useState(0);
+/*
+
+	const [변수 , 변수 전용 setState() ] = useState(초기값);
+	
+*/
+
+/*
+	위의 함수들은 기존 state 밑과 똑같다
+	
+	state = {
+		var : 0,
+		var1 : 0,
+		first : 0,
+	}
+
+	state를 객체로 묶지 않고 하나씩 쪼갰다라는 개념
+	이 hooks는 함수 컴포넌트 안에 위치해야 한다
+	
+	use로 시작하는게 Hooks이다
+
+	input type="text"에서 hendleEvent는 함수안에 설정을 해 주어야
+	
+	state가 바뀌면 함수 자체가 바뀜
+
+
+	this.setState와는 다르게 일일히 바꾸어 주어야 
+
+*/
+
+}
