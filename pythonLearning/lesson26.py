@@ -233,6 +233,19 @@ print(sum)
 for i in range(int(input())):
     print("Hello World, Judge "+str(i+1)+"!")
 '''
+'''
 # https://www.acmicpc.net/problem/15964
 a =list(map(int,input().split()))
 print( (a[0]+a[1])*(a[0]-a[1]) )
+'''
+
+number = list( map(int , input().split(" ")))
+li = list( map(int , input().split(" ")))
+sum = 0
+count = 0
+kijun1 = 0
+kijun2 = 1
+kijun = 2
+while(count < range(li) * range(li)-1 * range(li)-2):
+    
+    count += 1
