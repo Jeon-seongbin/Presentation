@@ -58,8 +58,6 @@ or조건 이용(union all로 대체)
 인덱스 생성시 시간이 걸릴 수 있다
 insert update가 자주 일어나면 시간이 더 걸릴 수도 있다
 
-
-
 4. 데이터베이스 논리적 저장 단계
 
 블록 block
@@ -83,7 +81,7 @@ view와 synonym은 오브젝트이지만  저장공간을 갖지 않으므로 �
 세그먼트를 담고있는 거대한 컨테이너
 
 5. 클러스터링 펙터
-인덱스를 쓸 때 얼마나 많은 블럭들을 읽을지에 대한 지표
+인덱스를 써서 검색을 할 때 얼마나 많은 블럭들을 읽을지에 대한 지표
 인덱스 로우의 순서와 테이블에 저장되어있는 데이터 로우의 위치가 얼마나 비슷한 순서로 저장되어 있느냐에 대한 정도를 나타냄
 순서가 비슷할 경우 클러스터링 펙터가 좋고(로우를 읽어들일 때 블록에 엑세스 한 횟수가 낮음)
 순서가 비슷하지 않을 경우 클러스터링 펙터가 나쁘다(로우를 읽어들일 때  블록에 엑세스 한 횟수가 많음)
@@ -101,4 +99,76 @@ view와 synonym은 오브젝트이지만  저장공간을 갖지 않으므로 �
 
 지금까지의 상황으로 보았을때 insert시 로우와 인덱스를 같이 입력하는 방식을 써야 할 듯
 
+6. 클러스터링 테이블, 인덱스
+클러스터링
+테이블이나 인덱스와 같은 오브젝트이며 테이블의 상위개념이다
+생성된 클러스터 오브젝트 내에 테이블이 생성됨
+테이블이 없는 클러스터는 어떤 데이터도 입력 할 수 없으므로 무의미
 
+클러스터링 테이블
+어떤 정해진 컬럼값을 기준으로 동일한 값을 가진 하나 이상의 테이블의 로우를 같은 장소에 저장하는 물리적인 기법
+하나 이상의 테이블에서 같은 값을 가진 로우를 모아 두었다는 것은 조인이 될 로우들이 이미 옆에 같이 있다는 것을 의미
+
+클러스터링 인덱스
+클러스터링 컬럼의 값 마다 하나의 인덱스 로우를 가진다
+일반적인 데이터와는 달리 distinct되어 저장된다(중복제거)
+
+
+단일테이블 클러스터링
+클러스터에 테이블이 하나만 존재
+
+다중테이블 클러스터링
+클러스터에 테이블이 여러개 존재
+
+장점
+조인시 블록에 엑세스 하는 횟수가 감소하며(클러스터 라고 하는 위치에 저장되어 있기 때문에)
+횟수가 감소함에 따라 클러스터링 펙터가 좋아진다
+
+단점 
+정해진 블록을 찾아 값을입력 하므로 dml 시 성능이 다소 떨어짐
+발생 안하면 괜찮
+
+
+클러스터링 테이블 실습
+
+create table t_cluster_Test (
+id number primary key,
+name varchar(32)
+)
+
+insert into t_cluster_test values(2,'b');
+insert into t_cluster_test values(2,'b');
+insert into t_cluster_test values(3,'c');
+
+create table t1_cluster_test(
+id number,
+email_address varchar(32),
+constraint  fk_id foreign key (id) references t_cluster_test(id) ON DELETE CASCADE
+)
+
+insert into t1_cluster_Test values(1,'a@a.com');
+insert into t1_cluster_Test values(2,'b@c.com');
+insert into t1_cluster_Test values(3,'b@c.com');
+
+create cluster C_cluster_test (id number);   
+/* 클러스터 생성 생성시 키 컬럼으로 지정할 컬럼은 형을 맞춰 주어야 한다*/
+
+
+create index C_cluster_test_idx on cluster C_cluster_test;
+/*인덱스 생성*/
+
+
+create table c_t_cluster_test cluster C_cluster_test(id) as select * from t_cluster_test;
+create table c_t1_cluster_test cluster C_cluster_test(id) as select * from t1_cluster_test;
+/* 클러스터 테이블 생성 c_cluster_test 에 기존 테이블 t_cluset_test와 t1_cluster_test를 담았다 (다중 테이블 클러스터) */
+
+
+SELECT OWNER, TABLE_NAME FROM DBA_TABLES WHERE CLUSTER_NAME = 'c_cluster_test';
+
+select t.id , t.name , t1.email_address from c_t_cluster_test t 
+inner join c_t1_cluster_test t1
+on t.id = t1.id;
+/*
+	클러스터 테이블 생성 확인은 할 수 없었다.. scott계정에서 실행해 줘서 그런건지?
+	sql developer 기준 테이블 세부정보에서 cluster_owner에 scott이라고 표시해주었으니 그걸로 다행인가 싶기도하고
+*/
