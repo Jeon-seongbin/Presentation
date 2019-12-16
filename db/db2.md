@@ -6,7 +6,7 @@
 * rownum = 2 인 경우 처음 겸색되서 나온 결과에 rownum 1 이 붙고 결과값이 rownum = 2와 맞지 않기 때문에 버리게 되고 그 과정을 반복하면 rownum = 2는 도달 할 수 없는 값이 된다
 
 ### 페이징에 이용 할 수 있는데 밑의 예시처럼 따라 할 것
-> select * from ( select rownum num tableA.* from tableA) where number between 5 and 10
+> select * from ( select rownum num tableA.* from tableA) where number between 5 and 10;
 
 # ROWID
 * 데이터베이스 내에서 데이터 공유의 주소
@@ -23,6 +23,6 @@
 > select rowid , * tableA from tableA
 
 ### 어떤 테이블이 몇개의 블록으로 이루어져 있는지
-> select count(Distinct(substr(rowid ,1 ,15))) as Block_Count from tableA;  
-# 블록번호 까지 문자열을 잘라서 중복된 컬럼을 제거 후 카운트
+> select count(Distinct(substr(rowid ,1 ,15))) as Block_Count from tableA;
+> 블록번호 까지 문자열을 잘라서 중복된 컬럼을 제거 후 카운트
 
