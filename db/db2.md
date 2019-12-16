@@ -24,5 +24,5 @@
 
 ### 어떤 테이블이 몇개의 블록으로 이루어져 있는지
 > select count(Distinct(substr(rowid ,1 ,15))) as Block_Count from tableA;
-  블록번호 까지 문자열을 잘라서 중복된 컬럼을 제거 후 카운트
+#블록번호 까지 문자열을 잘라서 중복된 컬럼을 제거 후 카운트
 
