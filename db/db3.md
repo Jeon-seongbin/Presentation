@@ -14,8 +14,6 @@
 
 > ALTER SESSION SET STATISTICS_LEVEL=ALL;
 
-
-
 > SELECT  /* ordered use_nl(t2) */ * FROM  EMP  T1 
 
 > INNER JOIN  DEPT  T2  
@@ -25,7 +23,6 @@
 > where t1.empno >3440
 
 > AND t1.empno <3449
-> / /*  실행계획을 확인할 쿼리  /*/
 
 >SELECT * FROM TABLE(dbms_xplan.display_cursor(NULL,NULL,'ALLSTATS LAST'));
 
