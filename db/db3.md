@@ -58,24 +58,24 @@ FROM test1 a LEFT JOIN test2 b
 ON (a.aa = b.aa)
 WHERE b.cc = 7;
 ```
-1. 두번째
+2. 두번째
 ```sql
 SELECT *
 FROM test1 a LEFT JOIN test2 b
 ON (a.aa = b.aa AND b.cc = 7);
 ```
 * 첫번째 쿼리, 두번째 쿼리의 결과문이 다르다
-1. 첫번째
+** 첫번째
 |aa|bb|cc|dd|
-|---|---|---|---|
-1 | 4 | 1 | 7
+|---
+| 1 | 4 | 1 | 7 |
 
-1. 두번째
+** 두번째
 |aa|bb|cc|dd|
-|-----|-----|-----|-----|
-1 | 4 | 1 | 7
-2 | 5 | null | null
-3 | 6 | null | null
+|---
+| 1 | 4 | 1 | 7 |
+| 2 | 5 | null | null |
+| 3 | 6 | null | null |
 
 
 * INNER JOIN 시 where 에 걸었던 행의 조건을 on에다 걸으면 더 좋다
