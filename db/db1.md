@@ -150,7 +150,7 @@
 
 
 > 클러스터링 테이블 실습
-'''sql
+```sql
 create table t_cluster_Test (
 id number primary key,
 name varchar(32)
@@ -192,4 +192,4 @@ on t.id = t1.id;
 	클러스터 테이블 생성 확인은 할 수 없었다.. scott계정에서 실행해 줘서 그런건지?
 	sql developer 기준 테이블 세부정보에서 cluster_owner에 scott이라고 표시해주었으니 그걸로 다행인가 싶기도하고
 */
-'''
+```
