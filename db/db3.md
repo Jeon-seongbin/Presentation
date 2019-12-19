@@ -39,6 +39,7 @@ SELECT * FROM TABLE(dbms_xplan.display_cursor(NULL,NULL,'ALLSTATS LAST'));
 ## 쿼리 실행순서를 보는 이유
 
 test1
+
 |aa|bb|
 |---|---|
 |1|4|
@@ -46,6 +47,7 @@ test1
 |3|6|
 
 test2
+
 |aa|cc|
 |---|---|
 |1|7|
@@ -65,12 +67,14 @@ FROM test1 a LEFT JOIN test2 b
 ON (a.aa = b.aa AND b.cc = 7);
 ```
 * 첫번째 쿼리, 두번째 쿼리의 결과문이 다르다
-** 첫번째
+ 첫번째
+
 |aa|bb|cc|dd|
 |---
 | 1 | 4 | 1 | 7 |
 
-** 두번째
+ 두번째
+
 |aa|bb|cc|dd|
 |---
 | 1 | 4 | 1 | 7 |
