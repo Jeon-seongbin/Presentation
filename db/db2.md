@@ -14,23 +14,27 @@
 * 유일한 주소이지만 테이블의 PK처럼 사용될 수는 없다. 레코드를 삭제했다면 삭제된 레코드의 rowid는 나중에 입력되는 다른 레코드에 부여 될 수 있다.
 
 * ROWID 의 구성
-  1. 데이터 오브젝트 번호 32bit (6자리)
-  1. DataFile 번호 10 bit (3자리)
-  1. Block 번호22bit (6자리)
-  1. Block 내 Slot 16bit (3자리)
+1. 데이터 오브젝트 번호 32bit (6자리)
+1. DataFile 번호 10 bit (3자리)
+1. Block 번호22bit (6자리)
+1. Block 내 Slot 16bit (3자리)
 
 ### ROWID 보는 법
-> select rowid , * tableA from tableA
-
+```sql
+select rowid , * tableA from tableA
+```
 ### 어떤 테이블이 몇개의 블록으로 이루어져 있는지
-> select count(Distinct(substr(rowid ,1 ,15))) as Block_Count from tableA;
->> 블록번호 까지 문자열을 잘라서 중복된 컬럼을 제거 후 카운트
+```sql
+select count(Distinct(substr(rowid ,1 ,15))) as Block_Count from tableA;
+/* 블록번호 까지 문자열을 잘라서 중복된 컬럼을 제거 후 카운트*/
+```
 
 # Oracle Hint
 * 힌트는 옵티마이저 라고 해서 항상 최선의 실행계획을 수립 할 수는 없으므로 테이블이나 인덱스의 잘못된 실행계획을 개발자가 직접 바꿀 수 있도록 도와주는 것
 * 사용자는 오라클 옵티마이보다 더 좋은 실행계획을 둘 수 있다
-
-> select /*+ 힌트내용 */ * from tableA
+```sql
+select /*+ 힌트내용 */ * from tableA
+```
 
 > ordered 힌트를 써서 from 절 이후에 나온 테이블 순서대로 조인이 일어나게끔 한다
 
@@ -42,9 +46,12 @@
 * 랜덤 엑세스에 대한 부하가 있다
 
 > 힌트의 사용
->> /*+ USE_NL(table1, table2 ...) */
->> 파라메터로서 드라이븐 테이블(비 드라이빙 테이블, 두번째 이후에 나오는 테이블을 지정) 인자 두개가 오면 자동으로 지정
->>> 힌트에서 ordered 키워드가 없으면 힌트가 무시된다
+```sql
+/*+ USE_NL(table1, table2 ...) */
+```
+
+> 파라메터로서 드라이븐 테이블(비 드라이빙 테이블, 두번째 이후에 나오는 테이블을 지정) 인자 두개가 오면 자동으로 지정
+>> 힌트에서 ordered 키워드가 없으면 힌트가 무시된다
 
 # Merge Join
 * 테이블을 소팅하고 병합해서 검색
