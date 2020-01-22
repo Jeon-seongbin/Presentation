@@ -50,6 +50,12 @@ select /*+ 힌트내용 */ * from tableA
 > 힌트의 사용
 ```sql
 /*+ USE_NL(table1, table2 ...) */
+// Nested Loof 조인 이용
+
+/*+ NO_USE_NL(table1, table2 ...) */
+// Nested Loof 조인 이용안함
+
+/*+ USE_NL_WITH_INDEX(table1, table2 ...) */
 ```
 
 > 파라메터로서 드라이븐 테이블(비 드라이빙 테이블, 두번째 이후에 나오는 테이블을 지정) 인자 두개가 오면 자동으로 지정
@@ -59,5 +65,32 @@ select /*+ 힌트내용 */ * from tableA
 * 테이블을 소팅하고 병합해서 검색
 * 범위 검색에 적절
 
+```sql
+/*+ USE_MERGE(table1, table2 ...) */
+//소트 머지 조인 이용
+```
+
 # Hash Join
 * 데이터가 적은 테이블을 메모리에 올려두고 해쉬함수를 이용해 두번째 테이블과의 조인을 시도하는 방법
+```sql
+/*+ USE_HASH(table1, table2 ...) */
+//HASH 조인 이용
+```
+
+# Oracle Hint
+## 최적화 목표 제어 힌트
+* FIRST_ROWS
+** 최적 응답시간을 목표로 최저 비용의 실행계획을 수립하도록 유도한다
+
+* ALL_ROWS
+** 쿼리 전체 결과를 수행하는 것에 대한 최적화 를 목표로 최저 ㅅ비용의 실행계획을 수립
+
+## 조인 순서 조정을 위한 힌트
+* ORDERED
+** from 절에 적혀있는 테이블 순서대로 조인 수행
+
+* LEADING
+** from 절에 기술할 테이블으 순서와 상관없이 조인 순서를 제어하는 힌트
+*** from절의 변경 없이 사용됨
+*** ordered힌트와 함께 사용되면 무시
+
