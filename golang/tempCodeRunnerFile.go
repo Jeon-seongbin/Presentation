@@ -2,31 +2,57 @@ package main
 
 import "fmt"
 
-func main(){
-	fmt.Println("hello world")
-	var a int32
-	var b int64
-	var c string
-	var d bool
-	var e float32
-	var f float64
+type Person struct{
+	name string
+	age int
+}
 
-	a = 5
-	b = 3
-	c = "abc"
-	d = true
-	e = 3.14
-	f = 3.14
-	g := 55
-	h := "a"
-	
-	fmt.Println(a)
-	fmt.Println(b)
-	fmt.Println(c)
-	fmt.Println(d)
-	fmt.Println(e)
-	fmt.Println(f)
-	fmt.Println(g)
-	fmt.Println(h)
-	fmt.Println("abc %v" , h)
+func (p Person) printName(){
+	fmt.Println(p.name)
+}
+
+
+type Student struct{
+	name string
+	age string
+	sungJuk SungJuk
+}
+
+type SungJuk struct{
+	name string
+	grade string
+}
+
+func (s Student) printStudentSungJuk(){
+	fmt.Println(s.SungJuk)
+}
+
+func main(){
+	var a[10] int
+	a[0] = 1
+
+	fmt.Println(a[0])
+
+	var p Person
+	p = Person{"A",3}
+	p1 := Person{name:"ccc",age:3}
+	p2 := Person{name:"ccc"}
+	p3 := Person{age:4}
+
+	fmt.Println(p,p1,p2,p3)
+
+	p3.name = "name3"
+	p3.age = 24
+
+	fmt.Println(p3.name, p3.age)
+	p3.printName()
+
+
+	s := Student{}
+	s.name = "studentName"
+	s.age = 24
+	s.sungJuk.name = "math"
+	s.sungJuk.grade ="B"
+
+	s.printStudentSungJuk
 }
