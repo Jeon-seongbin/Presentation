@@ -1,0 +1,22 @@
+{
+  "name": "test123",
+  "version": "1.0.0",
+  "description": "My astounding Nuxt.js project",
+  "author": "Jeon",
+  "private": true,
+  "scripts": {
+    "dev": "nuxt-ts",
+    "build": "nuxt-ts build",
+    "generate": "nuxt-ts generate",
+    "start": "nuxt-ts start"
+  },
+  "dependencies": {
+    "@nuxt/typescript-runtime": "^0.3.9",
+    "nuxt": "^2.0.0"
+  },
+  "devDependencies": {
+    "@nuxt/typescript-build": "^0.5.7",
+    "node-sass": "^4.13.1",
+    "sass-loader": "^8.0.2"
+  }
+}
