@@ -31,6 +31,7 @@
                 number : 1,
                 hello : "hello",
                 flag : false,
+                testArray : [1,2,3,4,5,],
             }
         },
         methods:{

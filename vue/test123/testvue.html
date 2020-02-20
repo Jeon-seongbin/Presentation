@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+   
+</head>
+<body>
+    <div id="root">
+        <form v-on:submit="onSubmitForm">
+            <div>
+                {{word}}
+            </div>
+            
+            <input type="text" v-model="value">
+            <button type="submit"> input </button>
+            <div>
+                {{result}}
+            </div>
+            
+            <!-- <button v-on:click="click" >button</button>
+            <div v-if="liked">
+                    click
+            </div>
+            <div v-else>
+                    no clickd21
+            </div> -->
+        </form>
+    </div>
+</body>
+<script>
+        var a = new Vue({
+            el : '#root',
+            data : {
+                liked : true,
+                word: "abc",
+                result : "",
+                value : "",
+            },
+            methods:{
+                click(){
+                    this.liked = !this.liked
+                },
+                onSubmitForm(e){
+                    e.preventDefault();
+                    
+                    if ( this.word[this.word.length -1 ] == this.value[0]){
+                        this.result = "correct";
+                        console.log("1");
+                        this.word = this.value;
+                    }else{
+                        this.result = "fail";
+                        console.log("2");
+                     
+                    
+                    }
+                
+                    
+                },
+            }
+        });
+    </script>
+</html>
