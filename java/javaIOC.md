@@ -37,6 +37,4 @@ class Test{
 
 # 가지고 오는 방법
 1. 표준방식인 생성자 이용
-2. @Autowired 어노테이션 이
-
-
+2. @Autowired 어노테이션 이용
