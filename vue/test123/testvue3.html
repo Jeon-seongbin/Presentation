@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id="root">
+        <div>
+            {{test}}
+        </div>
+        <div>
+            {{testCheckBox}}
+        </div>
+        <div>
+            <label for="test1">  test1  </label>
+            <input type="checkbox" id="test1" v-model="testCheckBox" value="test1"/>
+        </div>
+        <div>
+            <label for="test2">  test2  </label>
+            <input type="checkbox" id="test2" v-model="testCheckBox" value="test2"/>
+        </div>
+        <div>
+            <label for="test3">  test3  </label>
+            <input type="checkbox" id="test3" v-model="testCheckBox" value="test3"/>
+        </div>
+
+        <div>
+            <select v-model="testSelectBox1" multiple>
+                <option>A</option>
+                <option>B</option>
+                <option>C</option>
+                <option>D</option>
+            </select>
+            {{testSelectBox1}}
+        </div>
+        <div>
+            <select v-model="testSelectBoxSelected">
+                <option v-for=" option in testSelectBox2" v-bind="option.value">
+                    {{option.text}}
+                </option>
+            </select>
+            {{testSelectBoxSelected}}
+        </div>
+
+        
+
+    </div>
+</body>
+<script>
+    let a = new Vue({
+        el : '#root',
+        data : {
+            test: "do you see",
+            testCheckBox : [],
+            testSelectBox1 : [],
+            testSelectBox2 : [
+                {text : "test1", value:"test1"},
+                {text : "test2", value:"test2"},
+                {text : "test3", value:"test3"},
+                {text : "test4", value:"test4"},
+                {text : "test5", value:"test5"},
+            ],
+            testSelectBoxSelected : "",
+
+        }
+    })
+</script>
+</html>

@@ -46,7 +46,6 @@
             addList : function(e){
                 // e.preventDefault();
                 // submit.prevent();
-
                 if( this.input === this.answer.join('') ){
                     this.items.push({
                         "message" :this.input,
@@ -60,14 +59,12 @@
                     let ball = 0;
                     const answerArray = this.input.split('').map(v => parseInt(v));
 
-
                     for( let i = 0 ; i < 4 ; i++){
                         if( answerArray[i] === this.answer[i]){
                             strike++;
                         }else if(this.answer.includes(answerArray[i])){
                             ball++;
                         }
-                       
                     }
                       this.items.push({
                         "message" : "strike" +  strike +"  ball "+ ball +" insert "+ answerArray,
