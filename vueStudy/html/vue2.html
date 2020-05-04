@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <style>
+        .warning {
+            background-color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <div v-bind:class="styleObject">warning area</div>
+        <!-- {}자체가 오브젝트를 의미하므로 {}를 빼는게 맞다 -->
+        <input type="button" v-on:click="switchIsActive" value="change" />
+    </div>
+</body>
+<script>
+    new Vue({
+        el: "#app",
+        data: {
+            isActive: false,
+            styleObject: {
+                warning:true,
+
+            }
+        },
+        methods: {
+            switchIsActive: function() {
+                console.log("a");
+            //    console.log(this.isActive);
+              //  this.isActive = !this.isActive;
+              //  console.log(this.styleObject.warning);
+                this.styleObject.warning = !this.styleObject.warning;
+        
+                console.log(this.styleObject.warning);
+            },
+        }
+    })
+</script>
+
+</html>

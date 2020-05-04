@@ -1,0 +1,107 @@
+<html>
+    <meta charset="utf-8">
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <!-- vue js 가 설치 되어 있음-->
+    <body>
+        <div id="app">
+
+            <input type="text" v-model="message"/>
+            <div>
+                {{ message }}
+
+            </div>
+            <div>
+                {{ greeting }}
+            </div>
+            <div>
+               <!-- {{ address }} -->
+               <!-- object 자체를 표시 -->
+            </div>
+            <!-- <div>
+                {{address.perfecture}} -->
+            <!-- </div> -->
+            <div>
+
+               <div> hello my name is {{persons[0].name}}  my address is {{persons[0].address.prefecture}}    {{persons[0].address.city}}  {{persons[0].address.other}}</div>
+               <div> hello my name is {{persons[1].name}}  my address is {{persons[1].address.prefecture}}    {{persons[1].address.city}}  {{persons[1].address.other}}</div>
+            
+            
+            </div>
+            <div>
+                <div id='example-3'>
+                    <input type="checkbox" id="jack" value="Jack" v-model="checkedNames">
+                    <label for="jack">Jack</label>
+                    <input type="checkbox" id="john" value="John" v-model="checkedNames">
+                    <label for="john">John</label>
+                    <input type="checkbox" id="mike" value="Mike" v-model="checkedNames">
+                    <label for="mike">Mike</label>
+                    <br>
+                    <span>Checked names: {{ checkedNames }}</span>
+                  </div>
+                        
+                <!-- <ul>
+                    <li v-for="(person )in persons">
+                        hello my name is {{person.name}} my address is {{person.address.prefecture}} {{person.address.city}} {{person.address.other}}
+
+                    </li>
+
+                </ul> -->
+            </div>
+        </div>
+        <div id="app2">
+
+        </div>
+    </body>
+    <script>
+        // vue instance 안에 object가 있음
+        // new vue => 뷰 인스턴스
+        // {{ }} ->  표현식이다
+        // 뷰는 리엑티브 하다
+        
+
+        new Vue({ 
+            el : "#app",
+            //element
+            // # id 영역에 vue를 적용시킨다 는 이야기
+            // id app 태그에 요소를 연결한다
+
+
+            data() {
+                return {
+                //데이터 오브젝트에 에 엘리먼트에 쓸 변수? 데이터를 저장한다 
+                message: "hello vueJs",
+                greeting: "hello",
+                checkedNames: [],
+                persons :[
+                    {
+                        name: 'aaa',
+                        age: 25,
+                        address: {
+                            prefecture:'tokyo',
+                            city : 'katushika',
+                            other: 'abc'
+                        }
+                    },
+                    {
+                        name: 'dddd',
+                        age: 325,
+                        address: {
+                            prefecture:'saitama',
+                            city : 'kasukabe',
+                            other: 'abdc'
+                        }
+                    },
+                ],
+
+             }
+              },
+       
+                other : [],
+                //이런식으로 구성 가능
+            });
+        new Vue({
+            el : "#app2",
+            // # id 영역에 vue를 적용시킨다 는 이야기
+        })
+    </script>
+</html>
