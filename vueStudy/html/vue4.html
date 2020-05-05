@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+<body>
+    <div id="app">
+        <my-component></my-component>
+        <my-local-component></my-local-component>
+        <my-local-component></my-local-component>
+        <my-test-props message="abc" @childs-event="parentsMethod"></my-test-props>
+        <!--2. 자식 컴포넌트에 emit을 정의한 속성을 기입하고 값에는 부모 컴포넌트에서 실행할 메소들명을 기입한다 -->
+    </div>
+    <script>
+        //전역 컴포넌트
+        //전역 컴포넌트 등록 시 뷰 인스턴스 보다 앞에 와야 함
+        //루트 Vue 인스턴스를 인스턴스화하기 전에 컴포넌트가 등록되어 있는지 확인하십시오. 
+        Vue.component("my-component", {
+            template: "<div>global component </div>"
+        })
+ 
+        //지역 컴포넌트
+        //지역 컴포넌트도 루트 뷰 인스턴스 보다 앞에 와야 함 
+        const child = {
+            template: '<button v-on:click="counter += 1">{{ counter }}</button>',
+            //컴포넌트의 data 는 동일한 컴포넌트 끼리 데이터를 공유 하므로 return 시 새로운 객체를 반환 해야 한다
+            //컴포넌트 인스턴스가 모두 같은 data 객체를 공유
+            data() {
+                return {
+                    counter: 0,
+                }
+            }
+        }
+
+        const testProps = {
+            props: ['message'],
+            template : '<p>{{message}} <input type="button" @click="updateTestData()" value="emitEvnent"/><p>',
+            data() {
+                return {
+                    abc :"abc",
+                }
+            },
+            methods : {
+                updateTestData(){
+                    this.$emit("childs-event",this.abc);
+                    //1. emit 을 정의한다
+
+                }
+            }
+        }
+
+        new Vue({
+            el: "#app",
+            data(){
+                return {
+                    "testData":"testData"
+                }
+            },
+            methods:{
+                parentsMethod(message){
+                    console.log(message)
+                    //3. 부모 컴포넌트의 메소드에서 자식 컴포넌트에서 준 값을 참조 할 수 있다
+                }
+            },
+            components: {
+                "my-local-component": child,
+                "my-test-props" : testProps,
+            },
+        });
+
+    </script>
+</body>
+</html>
