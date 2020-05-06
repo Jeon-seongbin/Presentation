@@ -2,9 +2,21 @@
   <div id="app">
     <div id="nav">
       <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+      <router-link to="/about">About</router-link> |
+      <router-link to="/privacy">privacy</router-link> |
+      <router-link to="/user/1">user</router-link>
+      <!-- <router-link :to="{
+          name:'user',
+          params:{
+            id:2,
+          },
+          query:{
+            q:'abc',
+          }
+        }">User</router-link> -->
     </div>
     <router-view/>
+    <!-- router-view 에서 router에서 선택한 컴포넌트를 표시한다 (url도 변경) -->
   </div>
 </template>
 

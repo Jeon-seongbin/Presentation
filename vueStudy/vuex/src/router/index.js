@@ -1,6 +1,10 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
+import Privacy from '../views/Privacy.vue';
+import User from '../views/User.vue';
+import First from '../views/privacy/First.vue';
+import Second from '../views/privacy/Second.vue';
 
 Vue.use(VueRouter)
 
@@ -17,6 +21,32 @@ Vue.use(VueRouter)
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
+  },
+  {
+    path:'/privacy',
+    name:'privacy',
+    component: Privacy,
+    children:[
+      {
+        path:'first',
+        name: 'first',
+        component : First,
+      },
+      {
+        path:'second',
+        name: 'second',
+        component : Second,
+      },
+    ]
+  },
+  {
+    path:'/user/:id',
+    name:'user',
+    component: User
+  },
+  {
+    path:'*',
+    redirect:"/",
   }
 ]
 
