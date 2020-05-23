@@ -1,5 +1,6 @@
-# PGA 영역
+# PGA (UGA)영역
 ## Private Global area
+## User Global Area
 
 1. 세션영역
   * 유저가 데이터베이스로 연결할 때 데이터베이스가 유저를 위한 세션을 만든다
