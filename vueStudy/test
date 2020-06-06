@@ -1,0 +1,88 @@
+새로고침하면 데이터가없어지기 때문에
+최상단에 로드 유저를 돌린다
+axios는 mounted 에넣는다
+
+
+마운티드 가 될때 디스패치 로드유저
+
+할 수 있다
+
+
+이거를 팬딩전에 success가 된다
+
+
+dispatch 이후에 new Vue문 실행
+
+store.dispatch(authmodule/loadUser).then(() => {
+
+new Vue
+
+})
+
+로그아웃 하면 인증처리 계속 돈다
+
+
+loaduser 중간에서 토큰이 없으면 중간에 끊어준
+
+
+subscribe를 이용하여 token관리
+mutation을 콜 할때마다 subscriber가 실행한다
+-> commit을 할 때마다 
+
+auth subscriber.js 
+store 에 있는거 가져온다
+
+
+payload token이 오도록
+
+pending
+
+
+store.subscriber.js
+
+soter.subscribe( ( mutaiton, store) ) => {
+  
+
+}
+
+axios 는 mounted
+
+
+commit (type, payload)
+co
+
+
+pending 로딩바
+mutation.payload => token이 오도록
+타입관리
+
+
+로그인시
+api .defaults.headers["authorization"] = "bearer:" mutation.payload
+
+로그아웃시
+api .defaults.headers["authorization"] = "bearer:" null
+
+
+api inetseptors.response.user((response ) => {
+  return (
+    response
+  )
+})
+
+네비게이션 가드
+
+라우트에서 메타를 등록하고 
+before => {
+
+
+
+meta {
+  guest 
+}
+
+to matched some( record -> record.meta.guestpage){
+next()
+} else{
+ next()
+}
